@@ -1,0 +1,50 @@
+{extends file="admin-layout.tpl"}
+
+{block name="no-return-functions"}
+{$admin_current_location = 'tools'}
+{/block}
+
+{block name="page-title"}{intl l='Brand Promotion' d='brandpromo.bo.default'}{/block}
+
+{block name="check-auth"}
+{check_auth role="ADMIN" resource="admin.module" access="VIEW" module="BrandPromo" login_tpl="/admin/login"}
+{/block}
+
+{block name="main-content"}
+<ul class="breadcrumb">
+    <li><a href="{url path='/admin/home'}">{intl l="Home" d='brandpromo.bo.default'}</a></li>
+    <li><a href="{url path='/admin/tools'}">{intl l="Tools" d='brandpromo.bo.default'}</a></li>
+    <li>
+        <a href="{url path='/admin/module/brandpromo/tool'}">{intl l="Brand Promotion" d='brandpromo.bo.default'}</a>
+    </li>
+</ul>
+
+<div>
+    {form name="brandpromo_form"}
+    <form method="POST" {form_enctype form=$form} class="clearfix">
+    {form_hidden_fields form=$form}
+
+    {render_form_field form=$form field="success_url" value={url path="/admin/module/brandpromo/tool"}}
+    {render_form_field form=$form field="error_url" value={url path="/admin/module/brandpromo/tool"}}
+
+    {if $form_error}
+        <div class="alert alert-danger">{$form_error_message}</div>
+    {/if}
+
+        <div class="row">
+            <div class="col-md-3">
+                {render_form_field form=$form field="brand"}
+            </div>
+        </div>
+
+        <span class="input-group-btn">
+            <button type="submit" class="form-submit-button btn btn-default" formaction="{url path="/admin/module/brandpromo/tool/save/1"}">{intl l="Put brand in promotion" d='brandpromo.bo.default'}</button>
+            <button type="submit" class="form-submit-button btn btn-default" formaction="{url path="/admin/module/brandpromo/tool/save/0"}">{intl l="Remove brand from promotion" d='brandpromo.bo.default'}</button>
+        </span>
+
+
+    </form>
+    {/form}
+</div>
+
+{/block}
