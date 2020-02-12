@@ -29,13 +29,6 @@ class BrandPromoForm extends BaseForm
                     'required' => true,
                 ]
             )
-            ->add(
-                'promo',
-                'checkbox',
-                [
-                    'label' => 'Promo'
-                ]
-            )
         ;
     }
 
