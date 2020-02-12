@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<routes xmlns="http://symfony.com/schema/routing"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://symfony.com/schema/routing http://symfony.com/schema/routing/routing-1.0.xsd">
+
+    <route id="brandpromo.tool.display" path="/admin/module/brandpromo/tool">
+        <default key="_controller">BrandPromo\Controller\BrandPromoController::toolShow</default>
+    </route>
+
+    <route id="brandpromo.form.save" path="/admin/module/brandpromo/tool/save/{value}" methods="post">
+        <default key="_controller">BrandPromo\Controller\BrandPromoController::setBrandToPromo</default>
+    </route>
+
+</routes>
